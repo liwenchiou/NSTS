@@ -104,9 +104,13 @@ body {
   color: white;
 }
 .about--title {
-  font-size: 30px;
+  font-size: 50px;
   margin-bottom: 20px;
 }
+.about--content p {
+  font-size: clamp(10px, 10vw, 24px);
+}
+
 .about--section {
   padding: 20px;
   margin-bottom: 20px;
@@ -115,9 +119,16 @@ body {
 .work {
   margin-bottom: 20px;
   margin-right: 20px;
+  padding: 0;
 }
-.work img {
+.work--img {
   margin-bottom: 10px;
+  background: url("https://fakeimg.pl/800x300/");
+  width: 100%; /* 讓區塊適應容器大小 */
+  height: 300px; /* 確保高度一致 */
+  background-size: cover; /* 讓圖片填滿，避免留白 */
+  background-position: center; /* 讓圖片居中 */
+  border-radius: 15px 15px 0 0;
 }
 .work h2 {
   text-align: center;
