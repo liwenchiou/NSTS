@@ -145,6 +145,10 @@ body {
   margin-bottom: 20px;
 }
 
+.btn {
+  padding: 20px;
+}
+
 .footer--section {
   padding: 20px;
   max-width: 100%;
