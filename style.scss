@@ -3,6 +3,8 @@
 img {
   max-width: 100%;
   height: auto;
+    background-size: cover; /*圖片自動調整大小*/
+    display: block;
 }
 /*不計算padding 和 border*/
 *,
@@ -13,7 +15,24 @@ img {
 
 * {
   font-family: "Noto Sans TC", "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.2;
+  line-height: 1.5;
+  font-size: 20px;
+  list-style: none;
+}
+
+body{
+  background-color: #000;
+  color:white;
+
+  /*test*/
+  // background-color: #fff;
+  // color:#000;
+}
+
+/*  工具區 */
+.flu-border{
+    border: 3px solid #00ff00; /* 螢光綠 */
+    box-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ffff; /* 增加藍色光暈 */
 }
 
 .banner {
@@ -29,6 +48,7 @@ img {
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-bottom: 20px;
 
   &::before {
     content: "";
@@ -61,23 +81,53 @@ img {
   // border: 1px solid black;
   color: white;
   z-index: 2;
-animation: slideUp 0.8s ease-out;
+  animation: slideUp 0.8s ease-out;
   & h1 {
-    font-size: 120px;
+    // font-size: 120px;
+    font-size: clamp(40px, 10vw, 120px);
   }
 
   & small {
-    font-size: 80px;
+    // font-size: 80px;
+    font-size: clamp(24px, 6vw, 80px);
   }
 }
 
 @keyframes slideUp {
-    from {
-        transform: translateY(100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
+
+.about--section {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.about {
+  // border: 1px solid black;
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+
+  &--title{
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  &--content {
+    // font-size: 24px;
+    
+  }
+}
+
+.about--section{
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
