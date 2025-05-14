@@ -1,0 +1,113 @@
+@import "../_reset";
+
+/*圖片不管多大都會控制在父層內*/
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/*不計算padding 和 border*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+
+.container {
+    margin: 0 auto;
+    border: 1px solid black;
+    padding: 20px;
+    width: 100%;
+    max-width: 1440px;
+}
+
+.card {
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+    /*card 的間隔還有對齊*/
+}
+
+
+.card--list--content {
+    background: url("https://picsum.photos/800/800");
+    background-size: cover;
+    /*
+    background-size: cover; 背景填滿
+    */
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* 將內容水平垂直置中 */
+    padding: 20px;
+    position: relative;
+
+
+
+    // 讓文字內容初始時在下方
+    & h2,
+    & p {
+        position: relative;
+        transform: translateY(40px); // 初始往下偏移 40px
+        opacity: 0; // 初始隱藏
+        transition: transform 0.3s ease-out, opacity 0.3s ease-in-out;
+        color: rgb(171, 251, 180);
+        /*
+        transition: transform 0.3s ease-out, opacity 0.3s ease-in-out;
+        由下往上
+        */
+    }
+
+    & h2 {
+        font-size: 40px;
+        line-height: 1.2;
+    }
+
+    & p {
+        font-size: 20px;
+        text-align: center;
+        line-height: 1.2;
+    }
+}
+
+// 添加半透明遮罩
+.card--list--content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); // 50% 黑色透明遮罩
+    opacity: 0; // 初始隱藏
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1; // 确保遮罩位于背景图上方
+
+    /* 
+            before 用絕對定位確實覆蓋圖片
+            background-color: rgba(0, 0, 0, 0.5); 黑色半透明
+            opacity: 0; 初始隱藏
+            transition: opacity 0.3s ease-in-out; 讓遮罩絲滑
+                opacity 透明度
+                0.3s 過渡時間
+                ease-in-out 開始結束較慢，中間快速
+        */
+}
+
+// 滑鼠移入 .card--list 時，顯示遮罩
+.card--list:hover .card--list--content::before {
+    opacity: 1;
+}
+
+.card--list:hover .card--list--content h2,
+.card--list:hover .card--list--content p {
+    transform: translateY(0); // 滑鼠移入時上滑
+    opacity: 1; // 逐漸顯示
+    z-index: 2;
+}
